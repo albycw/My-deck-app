@@ -1,0 +1,1028 @@
+[
+  {
+    "name": "Archer Queen",
+    "elixir": 5,
+    "roles": [
+      "wincon_support",
+      "air_dps",
+      "invisible"
+    ],
+    "rarity": "Champion",
+    "isChampion": true,
+    "owned": true,
+    "level": 12
+  },
+  {
+    "name": "Skeleton King",
+    "elixir": 4,
+    "roles": [
+      "swarm",
+      "splash",
+      "wincon_support"
+    ],
+    "rarity": "Champion",
+    "isChampion": true,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Golden Knight",
+    "elixir": 4,
+    "roles": [
+      "dash",
+      "tank_killer"
+    ],
+    "rarity": "Champion",
+    "isChampion": true,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Monk",
+    "elixir": 4,
+    "roles": [
+      "tank",
+      "deflect"
+    ],
+    "rarity": "Champion",
+    "isChampion": true,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Mighty Miner",
+    "elixir": 4,
+    "roles": [
+      "tank",
+      "single_target",
+      "drill_escape"
+    ],
+    "rarity": "Champion",
+    "isChampion": true,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Barbarian Barrel",
+    "elixir": 2,
+    "roles": [
+      "small_spell",
+      "ground_swarm_clear"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Log",
+    "elixir": 2,
+    "roles": [
+      "small_spell",
+      "ground_swarm_clear"
+    ],
+    "rarity": "Legendary",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Zap",
+    "elixir": 2,
+    "roles": [
+      "small_spell",
+      "reset"
+    ],
+    "rarity": "Common",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Snowball",
+    "elixir": 2,
+    "roles": [
+      "small_spell",
+      "knockback"
+    ],
+    "rarity": "Common",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Arrows",
+    "elixir": 3,
+    "roles": [
+      "small_spell",
+      "air_swarm_clear"
+    ],
+    "rarity": "Common",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Poison",
+    "elixir": 4,
+    "roles": [
+      "big_spell",
+      "area_control",
+      "building_chip"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Fireball",
+    "elixir": 4,
+    "roles": [
+      "big_spell",
+      "burst"
+    ],
+    "rarity": "Rare",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Lightning",
+    "elixir": 6,
+    "roles": [
+      "big_spell",
+      "reset",
+      "building_burst"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Rocket",
+    "elixir": 6,
+    "roles": [
+      "big_spell",
+      "burst"
+    ],
+    "rarity": "Rare",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Earthquake",
+    "elixir": 3,
+    "roles": [
+      "building_control",
+      "chip"
+    ],
+    "rarity": "Rare",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Tornado",
+    "elixir": 3,
+    "roles": [
+      "control",
+      "king_activation",
+      "grouping"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Cannon",
+    "elixir": 3,
+    "roles": [
+      "building",
+      "ground_tank_control"
+    ],
+    "rarity": "Common",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Tesla",
+    "elixir": 4,
+    "roles": [
+      "building",
+      "air_ground_defense"
+    ],
+    "rarity": "Rare",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Bomb Tower",
+    "elixir": 4,
+    "roles": [
+      "building",
+      "splash_defense"
+    ],
+    "rarity": "Rare",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Inferno Tower",
+    "elixir": 5,
+    "roles": [
+      "building",
+      "tank_melter"
+    ],
+    "rarity": "Rare",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Goblin Cage",
+    "elixir": 4,
+    "roles": [
+      "building",
+      "kite",
+      "mini_tank"
+    ],
+    "rarity": "Rare",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Phoenix",
+    "elixir": 4,
+    "roles": [
+      "air_dps",
+      "revive"
+    ],
+    "rarity": "Legendary",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Baby Dragon",
+    "elixir": 4,
+    "roles": [
+      "splash_air",
+      "support"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Electro Wizard",
+    "elixir": 4,
+    "roles": [
+      "reset",
+      "air_ground_support"
+    ],
+    "rarity": "Legendary",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Musketeer",
+    "elixir": 4,
+    "roles": [
+      "air_dps",
+      "support"
+    ],
+    "rarity": "Rare",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Archers",
+    "elixir": 3,
+    "roles": [
+      "air_dps",
+      "cycle_support"
+    ],
+    "rarity": "Common",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Minions",
+    "elixir": 3,
+    "roles": [
+      "air_dps"
+    ],
+    "rarity": "Common",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Bats",
+    "elixir": 2,
+    "roles": [
+      "air_dps",
+      "cycle_support"
+    ],
+    "rarity": "Common",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Skeletons",
+    "elixir": 1,
+    "roles": [
+      "cycle",
+      "kite"
+    ],
+    "rarity": "Common",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Ice Spirit",
+    "elixir": 1,
+    "roles": [
+      "cycle",
+      "reset",
+      "freeze"
+    ],
+    "rarity": "Common",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Fire Spirit",
+    "elixir": 1,
+    "roles": [
+      "cycle",
+      "burst"
+    ],
+    "rarity": "Common",
+    "isChampion": false,
+    "owned": true,
+    "level": 12
+  },
+  {
+    "name": "Electro Spirit",
+    "elixir": 1,
+    "roles": [
+      "cycle",
+      "reset",
+      "chain"
+    ],
+    "rarity": "Common",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Goblin Gang",
+    "elixir": 3,
+    "roles": [
+      "swarm",
+      "punish"
+    ],
+    "rarity": "Common",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Guards",
+    "elixir": 3,
+    "roles": [
+      "swarm",
+      "shields"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Skeleton Army",
+    "elixir": 3,
+    "roles": [
+      "swarm",
+      "tank_melt"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Royal Delivery",
+    "elixir": 3,
+    "roles": [
+      "defense",
+      "splash"
+    ],
+    "rarity": "Common",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Goblin Drill",
+    "elixir": 4,
+    "roles": [
+      "win_condition",
+      "chip",
+      "ground_pressure"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Hog Rider",
+    "elixir": 4,
+    "roles": [
+      "win_condition",
+      "cycle"
+    ],
+    "rarity": "Rare",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Royal Giant",
+    "elixir": 6,
+    "roles": [
+      "win_condition",
+      "tank_ranged"
+    ],
+    "rarity": "Common",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Giant",
+    "elixir": 5,
+    "roles": [
+      "tank",
+      "win_condition"
+    ],
+    "rarity": "Rare",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Golem",
+    "elixir": 8,
+    "roles": [
+      "heavy_tank",
+      "win_condition"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "P.E.K.K.A",
+    "elixir": 7,
+    "roles": [
+      "tank_killer",
+      "wincon_support"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Mega Knight",
+    "elixir": 7,
+    "roles": [
+      "splash_tank",
+      "counterpush"
+    ],
+    "rarity": "Legendary",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Balloon",
+    "elixir": 5,
+    "roles": [
+      "win_condition",
+      "air_tank"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "X-Bow",
+    "elixir": 6,
+    "roles": [
+      "win_condition",
+      "siege"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Mortar",
+    "elixir": 4,
+    "roles": [
+      "win_condition",
+      "siege",
+      "defense"
+    ],
+    "rarity": "Common",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Graveyard",
+    "elixir": 5,
+    "roles": [
+      "win_condition",
+      "spell"
+    ],
+    "rarity": "Legendary",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Royal Hogs",
+    "elixir": 5,
+    "roles": [
+      "win_condition",
+      "split_pressure"
+    ],
+    "rarity": "Rare",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Battle Ram",
+    "elixir": 4,
+    "roles": [
+      "win_condition",
+      "bridge_spam"
+    ],
+    "rarity": "Rare",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Ram Rider",
+    "elixir": 5,
+    "roles": [
+      "win_condition",
+      "snare"
+    ],
+    "rarity": "Legendary",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Electro Giant",
+    "elixir": 8,
+    "roles": [
+      "heavy_tank",
+      "win_condition",
+      "zap_aura"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Giant Skeleton",
+    "elixir": 6,
+    "roles": [
+      "tank",
+      "splash_bomb"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Goblin Giant",
+    "elixir": 6,
+    "roles": [
+      "tank",
+      "carrier"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Lava Hound",
+    "elixir": 7,
+    "roles": [
+      "air_tank",
+      "win_condition"
+    ],
+    "rarity": "Legendary",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Miner",
+    "elixir": 3,
+    "roles": [
+      "mini_wincon",
+      "chip",
+      "backline_kill"
+    ],
+    "rarity": "Legendary",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Wall Breakers",
+    "elixir": 2,
+    "roles": [
+      "mini_wincon",
+      "cycle"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": true,
+    "level": 13
+  },
+  {
+    "name": "Royal Ghost",
+    "elixir": 3,
+    "roles": [
+      "invisible",
+      "melee_support"
+    ],
+    "rarity": "Legendary",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Bandit",
+    "elixir": 3,
+    "roles": [
+      "dash",
+      "bridge_spam"
+    ],
+    "rarity": "Legendary",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Dark Prince",
+    "elixir": 4,
+    "roles": [
+      "splash_charge",
+      "mini_tank"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Prince",
+    "elixir": 5,
+    "roles": [
+      "charge",
+      "tank_killer"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": true,
+    "level": 13
+  },
+  {
+    "name": "Valkyrie",
+    "elixir": 4,
+    "roles": [
+      "splash_ground",
+      "mini_tank"
+    ],
+    "rarity": "Rare",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Knight",
+    "elixir": 3,
+    "roles": [
+      "mini_tank",
+      "cycle"
+    ],
+    "rarity": "Common",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Ice Golem",
+    "elixir": 2,
+    "roles": [
+      "kite",
+      "mini_tank",
+      "cycle"
+    ],
+    "rarity": "Rare",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Mega Minion",
+    "elixir": 3,
+    "roles": [
+      "air_dps",
+      "support"
+    ],
+    "rarity": "Rare",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Minion Horde",
+    "elixir": 5,
+    "roles": [
+      "air_swarm",
+      "dps"
+    ],
+    "rarity": "Common",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Fisherman",
+    "elixir": 3,
+    "roles": [
+      "pull",
+      "control"
+    ],
+    "rarity": "Legendary",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Hunter",
+    "elixir": 4,
+    "roles": [
+      "burst_close",
+      "air_ground"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Zappies",
+    "elixir": 4,
+    "roles": [
+      "stun_control",
+      "ranged"
+    ],
+    "rarity": "Rare",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Flying Machine",
+    "elixir": 4,
+    "roles": [
+      "air_dps",
+      "bridge_spam_support"
+    ],
+    "rarity": "Rare",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Mother Witch",
+    "elixir": 4,
+    "roles": [
+      "counter_swarm",
+      "support"
+    ],
+    "rarity": "Legendary",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Witch",
+    "elixir": 5,
+    "roles": [
+      "swarm_spawn",
+      "splash"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Wizard",
+    "elixir": 5,
+    "roles": [
+      "splash",
+      "air_ground"
+    ],
+    "rarity": "Rare",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Ice Wizard",
+    "elixir": 3,
+    "roles": [
+      "slow",
+      "control"
+    ],
+    "rarity": "Legendary",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Magic Archer",
+    "elixir": 4,
+    "roles": [
+      "pierce",
+      "geometry",
+      "support"
+    ],
+    "rarity": "Legendary",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Dart Goblin",
+    "elixir": 3,
+    "roles": [
+      "long_range",
+      "chip"
+    ],
+    "rarity": "Common",
+    "isChampion": false,
+    "owned": true,
+    "level": 13
+  },
+  {
+    "name": "Goblin Barrel",
+    "elixir": 3,
+    "roles": [
+      "mini_wincon",
+      "spell_bait"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Princess",
+    "elixir": 3,
+    "roles": [
+      "long_range",
+      "spell_bait"
+    ],
+    "rarity": "Legendary",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Skeleton Dragons",
+    "elixir": 4,
+    "roles": [
+      "air_splash"
+    ],
+    "rarity": "Common",
+    "isChampion": false,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Electro Dragon",
+    "elixir": 5,
+    "roles": [
+      "air_support",
+      "reset_chain"
+    ],
+    "rarity": "Epic",
+    "isChampion": false,
+    "owned": false,
+    "level": 9
+  },
+  {
+    "name": "Evo Tesla",
+    "elixir": 4,
+    "roles": [
+      "building",
+      "air_ground_defense",
+      "cycle"
+    ],
+    "rarity": "Rare",
+    "isChampion": false,
+    "owned": true,
+    "level": 15
+  },
+  {
+    "name": "Evo Zap",
+    "elixir": 2,
+    "roles": [
+      "small_spell",
+      "reset",
+      "chain"
+    ],
+    "rarity": "Common",
+    "isChampion": false,
+    "owned": true,
+    "level": 12
+  },
+  {
+    "name": "Lumberjack",
+    "elixir": 4,
+    "roles": [
+      "burst",
+      "rage_support",
+      "mini_tank"
+    ],
+    "rarity": "Legendary",
+    "isChampion": false,
+    "owned": true,
+    "level": 12
+  },
+  {
+    "name": "Little Prince",
+    "elixir": 3,
+    "roles": [
+      "ranged",
+      "mini_wincon",
+      "support"
+    ],
+    "rarity": "Champion",
+    "isChampion": true,
+    "owned": false,
+    "level": 11
+  },
+  {
+    "name": "Boss Bandit",
+    "elixir": 4,
+    "roles": [
+      "dash",
+      "bridge_spam",
+      "mini_tank"
+    ],
+    "rarity": "Champion",
+    "isChampion": true,
+    "owned": false,
+    "level": 11
+  }
+]

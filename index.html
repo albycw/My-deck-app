@@ -1,0 +1,135 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>CR Deck Builder+</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+    }
+  </script>
+</head>
+<body>
+<header>
+  <h1>CR Deck Builder+</h1>
+  <nav>
+    <button class="tab-btn active" data-tab="deck">Deck</button>
+    <button class="tab-btn" data-tab="cards">My Cards</button>
+    <button class="tab-btn" data-tab="suggest">Suggestions</button>
+    <button class="tab-btn" data-tab="setup">Quick Setup</button>
+    <button class="tab-btn" data-tab="import">Import/Export</button>
+  </nav>
+</header>
+
+<main class="container">
+  <section id="tab-deck" class="panel">
+    <h3>Current Deck</h3>
+    <div class="deck" id="deckSlots"></div>
+    <div style="margin-top:10px" class="stat" id="deckStats"></div>
+    <hr>
+    <div class="controls">
+      <input id="searchDeck" type="text" placeholder="Search cards to add…">
+      <button class="btn" id="clearDeck">Clear</button>
+      <button class="btn primary" id="autoFill">Auto-fill (by roles)</button>
+    </div>
+    <div class="list" id="deckSearchResults"></div>
+  </section>
+
+  <section id="tab-cards" class="panel" style="display:none">
+    <div class="controls">
+      <input id="searchCards" type="text" placeholder="Search my cards…">
+      <button class="btn" id="addCard">Add Custom Card</button>
+    </div>
+    <div class="grid" id="cardsGrid"></div>
+  </section>
+
+  <section id="tab-suggest" class="panel" style="display:none">
+    <div class="controls">
+      <label>Target avg elixir&nbsp;
+        <select id="targetElixir">
+          <option>3.0</option><option>3.2</option><option selected>3.5</option>
+          <option>3.8</option><option>4.0</option>
+        </select>
+      </label>
+      <label style="margin-left:8px">Focus
+        <select id="focusMode">
+          <option value="balanced">Balanced</option>
+          <option value="cycle">Cycle</option>
+          <option value="beatdown">Beatdown</option>
+          <option value="control">Control</option>
+          <option value="spellbait">Spell-Bait</option>
+        </select>
+      </label>
+      <button class="btn primary" id="runSuggest">Suggest Improvements</button>
+    </div>
+    <div id="suggestOutput"></div>
+    <footer class="tips">
+      Tips: Ensure your “My Cards” levels & ownership are accurate. Suggestions avoid unowned cards,
+      prefer your higher-level options, and try to fix missing roles and awkward elixir curves.
+    </footer>
+  </section>
+
+  <section id="tab-import" class="panel" style="display:none">
+    <h3>Data Backup</h3>
+    <div class="controls">
+      <button class="btn" id="exportBtn">Export JSON</button>
+      <input id="importFile" type="file" accept="application/json">
+    </div>
+    <p class="stat">All data is stored locally on your device (LocalStorage). Export regularly if you plan to switch devices.</p>
+  </section>
+
+  <section id="tab-setup" class="panel" style="display:none">
+    <h3>Quick Setup</h3>
+    <div class="controls">
+      <textarea id="pasteDeck" rows="4" placeholder="Paste your 8 card names, comma-separated (e.g., Hog Rider, Fireball, Cannon, ...)" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#0b0e1f;color:#fff"></textarea>
+    </div>
+    <div class="controls">
+      <input id="missingCards" type="text" placeholder="Optional: Cards you DON'T own yet (comma-separated)">
+    </div>
+    <div class="controls">
+      <button class="btn primary" id="applySetup">Apply & Save</button>
+    </div>
+    <p class="stat">Tip: You can also go to <strong>My Cards</strong> to fine-tune levels after applying.</p>
+  </section>
+
+</main>
+
+<script>
+(function(){
+  try {
+    const LS_CARDS = 'cr.cards.v1';
+    const LS_DECK = 'cr.deck.v1';
+    if (!localStorage.getItem(LS_CARDS)) {
+      localStorage.setItem(LS_CARDS, `[{"name": "Archer Queen", "elixir": 5, "roles": ["wincon_support", "air_dps", "invisible"], "rarity": "Champion", "isChampion": true, "owned": true, "level": 12}, {"name": "Skeleton King", "elixir": 4, "roles": ["swarm", "splash", "wincon_support"], "rarity": "Champion", "isChampion": true, "owned": false, "level": 9}, {"name": "Golden Knight", "elixir": 4, "roles": ["dash", "tank_killer"], "rarity": "Champion", "isChampion": true, "owned": false, "level": 9}, {"name": "Monk", "elixir": 4, "roles": ["tank", "deflect"], "rarity": "Champion", "isChampion": true, "owned": false, "level": 11}, {"name": "Mighty Miner", "elixir": 4, "roles": ["tank", "single_target", "drill_escape"], "rarity": "Champion", "isChampion": true, "owned": false, "level": 9}, {"name": "Barbarian Barrel", "elixir": 2, "roles": ["small_spell", "ground_swarm_clear"], "rarity": "Epic", "isChampion": false, "owned": false, "level": 9}, {"name": "Log", "elixir": 2, "roles": ["small_spell", "ground_swarm_clear"], "rarity": "Legendary", "isChampion": false, "owned": false, "level": 9}, {"name": "Zap", "elixir": 2, "roles": ["small_spell", "reset"], "rarity": "Common", "isChampion": false, "owned": false, "level": 11}, {"name": "Snowball", "elixir": 2, "roles": ["small_spell", "knockback"], "rarity": "Common", "isChampion": false, "owned": false, "level": 11}, {"name": "Arrows", "elixir": 3, "roles": ["small_spell", "air_swarm_clear"], "rarity": "Common", "isChampion": false, "owned": false, "level": 11}, {"name": "Poison", "elixir": 4, "roles": ["big_spell", "area_control", "building_chip"], "rarity": "Epic", "isChampion": false, "owned": false, "level": 9}, {"name": "Fireball", "elixir": 4, "roles": ["big_spell", "burst"], "rarity": "Rare", "isChampion": false, "owned": false, "level": 11}, {"name": "Lightning", "elixir": 6, "roles": ["big_spell", "reset", "building_burst"], "rarity": "Epic", "isChampion": false, "owned": false, "level": 9}, {"name": "Rocket", "elixir": 6, "roles": ["big_spell", "burst"], "rarity": "Rare", "isChampion": false, "owned": false, "level": 11}, {"name": "Earthquake", "elixir": 3, "roles": ["building_control", "chip"], "rarity": "Rare", "isChampion": false, "owned": false, "level": 11}, {"name": "Tornado", "elixir": 3, "roles": ["control", "king_activation", "grouping"], "rarity": "Epic", "isChampion": false, "owned": false, "level": 9}, {"name": "Cannon", "elixir": 3, "roles": ["building", "ground_tank_control"], "rarity": "Common", "isChampion": false, "owned": false, "level": 11}, {"name": "Tesla", "elixir": 4, "roles": ["building", "air_ground_defense"], "rarity": "Rare", "isChampion": false, "owned": false, "level": 11}, {"name": "Bomb Tower", "elixir": 4, "roles": ["building", "splash_defense"], "rarity": "Rare", "isChampion": false, "owned": false, "level": 11}, {"name": "Inferno Tower", "elixir": 5, "roles": ["building", "tank_melter"], "rarity": "Rare", "isChampion": false, "owned": false, "level": 11}, {"name": "Goblin Cage", "elixir": 4, "roles": ["building", "kite", "mini_tank"], "rarity": "Rare", "isChampion": false, "owned": false, "level": 11}, {"name": "Phoenix", "elixir": 4, "roles": ["air_dps", "revive"], "rarity": "Legendary", "isChampion": false, "owned": false, "level": 9}, {"name": "Baby Dragon", "elixir": 4, "roles": ["splash_air", "support"], "rarity": "Epic", "isChampion": false, "owned": false, "level": 9}, {"name": "Electro Wizard", "elixir": 4, "roles": ["reset", "air_ground_support"], "rarity": "Legendary", "isChampion": false, "owned": false, "level": 9}, {"name": "Musketeer", "elixir": 4, "roles": ["air_dps", "support"], "rarity": "Rare", "isChampion": false, "owned": false, "level": 11}, {"name": "Archers", "elixir": 3, "roles": ["air_dps", "cycle_support"], "rarity": "Common", "isChampion": false, "owned": false, "level": 11}, {"name": "Minions", "elixir": 3, "roles": ["air_dps"], "rarity": "Common", "isChampion": false, "owned": false, "level": 11}, {"name": "Bats", "elixir": 2, "roles": ["air_dps", "cycle_support"], "rarity": "Common", "isChampion": false, "owned": false, "level": 11}, {"name": "Skeletons", "elixir": 1, "roles": ["cycle", "kite"], "rarity": "Common", "isChampion": false, "owned": false, "level": 11}, {"name": "Ice Spirit", "elixir": 1, "roles": ["cycle", "reset", "freeze"], "rarity": "Common", "isChampion": false, "owned": false, "level": 11}, {"name": "Fire Spirit", "elixir": 1, "roles": ["cycle", "burst"], "rarity": "Common", "isChampion": false, "owned": true, "level": 12}, {"name": "Electro Spirit", "elixir": 1, "roles": ["cycle", "reset", "chain"], "rarity": "Common", "isChampion": false, "owned": false, "level": 11}, {"name": "Goblin Gang", "elixir": 3, "roles": ["swarm", "punish"], "rarity": "Common", "isChampion": false, "owned": false, "level": 11}, {"name": "Guards", "elixir": 3, "roles": ["swarm", "shields"], "rarity": "Epic", "isChampion": false, "owned": false, "level": 9}, {"name": "Skeleton Army", "elixir": 3, "roles": ["swarm", "tank_melt"], "rarity": "Epic", "isChampion": false, "owned": false, "level": 9}, {"name": "Royal Delivery", "elixir": 3, "roles": ["defense", "splash"], "rarity": "Common", "isChampion": false, "owned": false, "level": 11}, {"name": "Goblin Drill", "elixir": 4, "roles": ["win_condition", "chip", "ground_pressure"], "rarity": "Epic", "isChampion": false, "owned": false, "level": 9}, {"name": "Hog Rider", "elixir": 4, "roles": ["win_condition", "cycle"], "rarity": "Rare", "isChampion": false, "owned": false, "level": 11}, {"name": "Royal Giant", "elixir": 6, "roles": ["win_condition", "tank_ranged"], "rarity": "Common", "isChampion": false, "owned": false, "level": 11}, {"name": "Giant", "elixir": 5, "roles": ["tank", "win_condition"], "rarity": "Rare", "isChampion": false, "owned": false, "level": 11}, {"name": "Golem", "elixir": 8, "roles": ["heavy_tank", "win_condition"], "rarity": "Epic", "isChampion": false, "owned": false, "level": 9}, {"name": "P.E.K.K.A", "elixir": 7, "roles": ["tank_killer", "wincon_support"], "rarity": "Epic", "isChampion": false, "owned": false, "level": 9}, {"name": "Mega Knight", "elixir": 7, "roles": ["splash_tank", "counterpush"], "rarity": "Legendary", "isChampion": false, "owned": false, "level": 9}, {"name": "Balloon", "elixir": 5, "roles": ["win_condition", "air_tank"], "rarity": "Epic", "isChampion": false, "owned": false, "level": 9}, {"name": "X-Bow", "elixir": 6, "roles": ["win_condition", "siege"], "rarity": "Epic", "isChampion": false, "owned": false, "level": 9}, {"name": "Mortar", "elixir": 4, "roles": ["win_condition", "siege", "defense"], "rarity": "Common", "isChampion": false, "owned": false, "level": 11}, {"name": "Graveyard", "elixir": 5, "roles": ["win_condition", "spell"], "rarity": "Legendary", "isChampion": false, "owned": false, "level": 9}, {"name": "Royal Hogs", "elixir": 5, "roles": ["win_condition", "split_pressure"], "rarity": "Rare", "isChampion": false, "owned": false, "level": 11}, {"name": "Battle Ram", "elixir": 4, "roles": ["win_condition", "bridge_spam"], "rarity": "Rare", "isChampion": false, "owned": false, "level": 11}, {"name": "Ram Rider", "elixir": 5, "roles": ["win_condition", "snare"], "rarity": "Legendary", "isChampion": false, "owned": false, "level": 9}, {"name": "Electro Giant", "elixir": 8, "roles": ["heavy_tank", "win_condition", "zap_aura"], "rarity": "Epic", "isChampion": false, "owned": false, "level": 9}, {"name": "Giant Skeleton", "elixir": 6, "roles": ["tank", "splash_bomb"], "rarity": "Epic", "isChampion": false, "owned": false, "level": 9}, {"name": "Goblin Giant", "elixir": 6, "roles": ["tank", "carrier"], "rarity": "Epic", "isChampion": false, "owned": false, "level": 9}, {"name": "Lava Hound", "elixir": 7, "roles": ["air_tank", "win_condition"], "rarity": "Legendary", "isChampion": false, "owned": false, "level": 9}, {"name": "Miner", "elixir": 3, "roles": ["mini_wincon", "chip", "backline_kill"], "rarity": "Legendary", "isChampion": false, "owned": false, "level": 9}, {"name": "Wall Breakers", "elixir": 2, "roles": ["mini_wincon", "cycle"], "rarity": "Epic", "isChampion": false, "owned": true, "level": 13}, {"name": "Royal Ghost", "elixir": 3, "roles": ["invisible", "melee_support"], "rarity": "Legendary", "isChampion": false, "owned": false, "level": 9}, {"name": "Bandit", "elixir": 3, "roles": ["dash", "bridge_spam"], "rarity": "Legendary", "isChampion": false, "owned": false, "level": 9}, {"name": "Dark Prince", "elixir": 4, "roles": ["splash_charge", "mini_tank"], "rarity": "Epic", "isChampion": false, "owned": false, "level": 9}, {"name": "Prince", "elixir": 5, "roles": ["charge", "tank_killer"], "rarity": "Epic", "isChampion": false, "owned": true, "level": 13}, {"name": "Valkyrie", "elixir": 4, "roles": ["splash_ground", "mini_tank"], "rarity": "Rare", "isChampion": false, "owned": false, "level": 11}, {"name": "Knight", "elixir": 3, "roles": ["mini_tank", "cycle"], "rarity": "Common", "isChampion": false, "owned": false, "level": 11}, {"name": "Ice Golem", "elixir": 2, "roles": ["kite", "mini_tank", "cycle"], "rarity": "Rare", "isChampion": false, "owned": false, "level": 11}, {"name": "Mega Minion", "elixir": 3, "roles": ["air_dps", "support"], "rarity": "Rare", "isChampion": false, "owned": false, "level": 11}, {"name": "Minion Horde", "elixir": 5, "roles": ["air_swarm", "dps"], "rarity": "Common", "isChampion": false, "owned": false, "level": 11}, {"name": "Fisherman", "elixir": 3, "roles": ["pull", "control"], "rarity": "Legendary", "isChampion": false, "owned": false, "level": 9}, {"name": "Hunter", "elixir": 4, "roles": ["burst_close", "air_ground"], "rarity": "Epic", "isChampion": false, "owned": false, "level": 9}, {"name": "Zappies", "elixir": 4, "roles": ["stun_control", "ranged"], "rarity": "Rare", "isChampion": false, "owned": false, "level": 11}, {"name": "Flying Machine", "elixir": 4, "roles": ["air_dps", "bridge_spam_support"], "rarity": "Rare", "isChampion": false, "owned": false, "level": 11}, {"name": "Mother Witch", "elixir": 4, "roles": ["counter_swarm", "support"], "rarity": "Legendary", "isChampion": false, "owned": false, "level": 9}, {"name": "Witch", "elixir": 5, "roles": ["swarm_spawn", "splash"], "rarity": "Epic", "isChampion": false, "owned": false, "level": 9}, {"name": "Wizard", "elixir": 5, "roles": ["splash", "air_ground"], "rarity": "Rare", "isChampion": false, "owned": false, "level": 11}, {"name": "Ice Wizard", "elixir": 3, "roles": ["slow", "control"], "rarity": "Legendary", "isChampion": false, "owned": false, "level": 9}, {"name": "Magic Archer", "elixir": 4, "roles": ["pierce", "geometry", "support"], "rarity": "Legendary", "isChampion": false, "owned": false, "level": 9}, {"name": "Dart Goblin", "elixir": 3, "roles": ["long_range", "chip"], "rarity": "Common", "isChampion": false, "owned": true, "level": 13}, {"name": "Goblin Barrel", "elixir": 3, "roles": ["mini_wincon", "spell_bait"], "rarity": "Epic", "isChampion": false, "owned": false, "level": 9}, {"name": "Princess", "elixir": 3, "roles": ["long_range", "spell_bait"], "rarity": "Legendary", "isChampion": false, "owned": false, "level": 9}, {"name": "Skeleton Dragons", "elixir": 4, "roles": ["air_splash"], "rarity": "Common", "isChampion": false, "owned": false, "level": 11}, {"name": "Electro Dragon", "elixir": 5, "roles": ["air_support", "reset_chain"], "rarity": "Epic", "isChampion": false, "owned": false, "level": 9}, {"name": "Evo Tesla", "elixir": 4, "roles": ["building", "air_ground_defense", "cycle"], "rarity": "Rare", "isChampion": false, "owned": true, "level": 15}, {"name": "Evo Zap", "elixir": 2, "roles": ["small_spell", "reset", "chain"], "rarity": "Common", "isChampion": false, "owned": true, "level": 12}, {"name": "Lumberjack", "elixir": 4, "roles": ["burst", "rage_support", "mini_tank"], "rarity": "Legendary", "isChampion": false, "owned": true, "level": 12}, {"name": "Little Prince", "elixir": 3, "roles": ["ranged", "mini_wincon", "support"], "rarity": "Champion", "isChampion": true, "owned": false, "level": 11}, {"name": "Boss Bandit", "elixir": 4, "roles": ["dash", "bridge_spam", "mini_tank"], "rarity": "Champion", "isChampion": true, "owned": false, "level": 11}]`);
+    } else {
+      // merge owned levels for your specific deck cards so they're correct even if existing
+      const existing = JSON.parse(localStorage.getItem(LS_CARDS));
+      const updateMap = [{}];
+    }
+    if (!localStorage.getItem(LS_DECK)) {
+      localStorage.setItem(LS_DECK, `["Evo Tesla", "Evo Zap", "Wall Breakers", "Lumberjack", "Fire Spirit", "Dart Goblin", "Prince", "Archer Queen"]`);
+    }
+  } catch(e){ console.warn('bootstrap failed', e); }
+})();
+</script>
+
+
+<script>
+// Roland v3.3 preferences
+try {
+  const PREF_KEY = 'cr.prefs.v1';
+  const prefs = { lanePredictor: 'B2', aqCue: 'C1' };
+  localStorage.setItem(PREF_KEY, JSON.stringify(prefs));
+} catch (e) {}
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
